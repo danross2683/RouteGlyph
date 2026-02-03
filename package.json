@@ -1,0 +1,41 @@
+{
+  "name": "routeglyph",
+  "version": "0.1.0",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev:api": "npm run dev --workspace @routeglyph/api",
+    "dev:web": "npm run dev --workspace @routeglyph/web",
+    "build:packages": "npm run build --workspace @routeglyph/domain --workspace @routeglyph/route-engine --workspace @routeglyph/gpx",
+    "build:apps": "npm run build --workspace @routeglyph/api --workspace @routeglyph/web",
+    "build": "npm run build:packages && npm run build:apps",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --check .",
+    "format:write": "prettier --write .",
+    "prepare": "husky"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.18.0",
+    "@types/node": "^22.10.2",
+    "@typescript-eslint/eslint-plugin": "^8.19.1",
+    "@typescript-eslint/parser": "^8.19.1",
+    "eslint": "^9.18.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-react-hooks": "^5.1.0",
+    "eslint-plugin-react-refresh": "^0.4.16",
+    "globals": "^15.14.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.2.11",
+    "prettier": "^3.4.2",
+    "typescript": "^5.7.2"
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js,jsx,mjs,cjs,json,md,css,html}": [
+      "prettier --write"
+    ]
+  }
+}

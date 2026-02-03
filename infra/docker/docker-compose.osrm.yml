@@ -1,0 +1,17 @@
+services:
+  osrm-tools:
+    image: ghcr.io/project-osrm/osrm-backend:latest
+    working_dir: /data
+    volumes:
+      - ../../data/osrm:/data
+    entrypoint: ["/bin/sh", "-lc"]
+    command: ["sleep infinity"]
+
+  osrm:
+    image: ghcr.io/project-osrm/osrm-backend:latest
+    working_dir: /data
+    volumes:
+      - ../../data/osrm:/data
+    command: ["osrm-routed", "--algorithm", "mld", "/data/region.osrm"]
+    ports:
+      - "5000:5000"
